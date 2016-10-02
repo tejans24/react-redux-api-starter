@@ -8,7 +8,6 @@ import config, { database } from '../config';
 import model from './models';
 import environments from '../config/environments';
 
-
 const app = express();
 
 // parse body params and attache them to req.body

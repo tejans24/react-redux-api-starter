@@ -15,12 +15,8 @@ const NOT_FOUND_HTTP_CODE = 404;
  * @returns {Boolean} true if id passed in is an integer, false if the id is not
  * an integer.
  */
-function checkIfIdIsInteger(id, res) {
-  if(id !== parseInt(id, 10).toString()) {
-    res.status(NOT_FOUND_HTTP_CODE).send('Not found');
-    return false;
-  }
-  return true;
+function checkIfIdIsInteger(id) {
+  return (id !== parseInt(id, 10).toString()) ? false : true;
 }
 
 export default { checkIfIdIsInteger };
