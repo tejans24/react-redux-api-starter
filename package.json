@@ -12,7 +12,9 @@
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests",
     "lint:fix": "npm run lint -- --fix",
-    "start": "concurrently 'node bin/server.js' 'nodemon api/index.js'",
+    "start": "concurrently --kill-others \"npm run start-api\" \"npm run start-client\"",
+    "start-api": "better-npm-run start-api",
+    "start-client": "better-npm-run start-client",
     "dev": "better-npm-run dev",
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
@@ -32,6 +34,19 @@
       "command": "nodemon bin/server --ignore dist --ignore coverage --ignore tests --ignore src",
       "env": {
         "NODE_ENV": "development",
+        "DEBUG": "app:*"
+      }
+    },
+    "start-api": {
+      "command": "nodemon --watch api api/index",
+      "env": {
+        "NODE_PATH": "./api",
+        "DEBUG": "app:*"
+      }
+    },
+    "start-client": {
+      "command": "node bin/server",
+      "env": {
         "DEBUG": "app:*"
       }
     },
