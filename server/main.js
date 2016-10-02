@@ -3,7 +3,7 @@ const debug = require('debug')('app:server')
 const webpack = require('webpack')
 const webpackConfig = require('../build/webpack.config')
 const config = require('../config')
-const httpProxy = require('http-proxy');
+var proxy = require('http-proxy-middleware');
 var React = require('react')
 var Router = require('react-router')
 
@@ -17,10 +17,11 @@ const paths = config.utils_paths
 // rendering, you'll want to remove this middleware.
 app.use(require('connect-history-api-fallback')())
 
-// Proxy to API server
-const proxy = httpProxy.createProxyServer({
-  target: 'http://' + environments.api.host + ':' + environments.api.port
-});
+// If proxy is enabled, proxy /api calls to the api server.
+if (config.proxy && config.proxy.enabled) {
+  const apiProxy = proxy('/api', {target: 'http://' + environments.api.host + ':' + environments.api.port});
+  app.use(apiProxy)
+}
 
 // ------------------------------------
 // Apply Webpack HMR Middleware

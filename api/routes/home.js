@@ -6,7 +6,7 @@ const router = express.Router();
 /**
  * @route /
  */
-router.route('/')
+router.route('/api')
   .get(homeCtrl.get);
 
 export default router;

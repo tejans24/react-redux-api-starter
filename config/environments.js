@@ -13,7 +13,10 @@ module.exports = {
   // are served webpack by to fix this issue:
   // http://stackoverflow.com/questions/34133808/webpack-ots-parsing-error-loading-fonts/34133809#34133809
   development : (config) => ({
-    compiler_public_path : `http://${config.server_host}:${config.server_port}/`
+    compiler_public_path : `http://${config.server_host}:${config.server_port}/`,
+    proxy: {
+      enabled: true
+    }
   }),
 
   // ======================================================
@@ -33,6 +36,9 @@ module.exports = {
   api: {
     "port": process.env.API_PORT || 3001,
     "host": process.env.API_HOST || "localhost"
+  },
+  proxy: {
+    enabled: true
   },
   winston: {
     file: {
