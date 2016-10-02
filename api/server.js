@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import winston from 'winston';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import routes from './routes';
+import v1Routes from './routes/v1';
 import config, { database } from '../config';
 import model from './models';
 import environments from '../config/environments';
@@ -36,7 +36,7 @@ logger.stream = {
 app.use(morgan("combined", { "stream": logger.stream }));
 
 // routes
-app.use('/', routes);
+app.use('/api/v1', v1Routes);
 
 // Start the server with sequelize synced
 model.init(environments.database['development']).sequelize.sync().then( () => {

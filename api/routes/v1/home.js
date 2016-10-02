@@ -1,12 +1,12 @@
 import express from 'express';
-import homeCtrl from '../controllers/home';
+import homeCtrl from '../../controllers/home';
 
 const router = express.Router();
 
 /**
  * @route /
  */
-router.route('/api')
+router.route('/')
   .get(homeCtrl.get);
 
 export default router;
