@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const config = require('../config')
 const debug = require('debug')('app:webpack:config')
+import { includePaths as bourbonIncludePaths } from 'bourbon'
+import { includePaths as neatIncludePaths } from 'bourbon-neat'
 
 const paths = config.utils_paths
 const __DEV__ = config.globals.__DEV__
@@ -130,8 +132,9 @@ webpackConfig.module.loaders.push({
   ]
 })
 
+//SASS Loader paths to include for the files to load
 webpackConfig.sassLoader = {
-  includePaths : paths.client('styles')
+  includePaths : [paths.client('styles'), bourbonIncludePaths, neatIncludePaths]
 }
 
 webpackConfig.postcss = [
