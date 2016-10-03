@@ -1,5 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
+import createLogger from 'redux-logger'
 import { browserHistory } from 'react-router'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
@@ -15,6 +16,9 @@ export default (initialState = {}) => {
   // ======================================================
   const enhancers = []
   if (__DEV__) {
+    //adding redux logging in the console
+    middleware.push(createLogger()) 
+       
     const devToolsExtension = window.devToolsExtension
     if (typeof devToolsExtension === 'function') {
       enhancers.push(devToolsExtension())
