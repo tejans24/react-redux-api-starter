@@ -1,4 +1,4 @@
-require('babel-register');
+require('babel-register')
 
 const argv = require('yargs').argv
 const config = require('../config')

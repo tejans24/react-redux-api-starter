@@ -132,7 +132,7 @@ webpackConfig.module.loaders.push({
   ]
 })
 
-//SASS Loader paths to include for the files to load
+// SASS Loader paths to include for the files to load
 webpackConfig.sassLoader = {
   includePaths : [paths.client('styles'), bourbonIncludePaths, neatIncludePaths]
 }

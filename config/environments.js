@@ -2,8 +2,8 @@
 // Supply a key to the default export matching the NODE_ENV that you wish to target, and
 // the base configuration will apply your overrides before exporting itself.
 
-import path from 'path';
-import database from './db';
+import path from 'path'
+import database from './db'
 
 module.exports = {
   // ======================================================
@@ -34,31 +34,29 @@ module.exports = {
     }
   }),
   api: {
-    "port": process.env.API_PORT || 3001,
-    "host": process.env.API_HOST || "localhost"
+    'port': process.env.API_PORT || 3001,
+    'host': process.env.API_HOST || 'localhost'
   },
   proxy: {
     enabled: true
   },
   winston: {
     file: {
-      "level": "info",
-      "filename": path.resolve(__dirname, "../logs/all-logs.js"),
-      "handleExceptions": true,
-      "json": true,
-      "maxsize": 5242880, //5MB
-      "maxFiles": 5,
-      "colorize": false
+      'level': 'info',
+      'filename': path.resolve(__dirname, '../logs/all-logs.js'),
+      'handleExceptions': true,
+      'json': true,
+      'maxsize': 5242880, // 5MB
+      'maxFiles': 5,
+      'colorize': false
     },
-    "console": {
-      "level": 'debug',
-      "handleExceptions": true,
-      "json": false,
-      "colorize": true
+    'console': {
+      'level': 'debug',
+      'handleExceptions': true,
+      'json': false,
+      'colorize': true
     }
-  }, 
+  },
   database
 }
-
-
 

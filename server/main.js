@@ -3,11 +3,9 @@ const debug = require('debug')('app:server')
 const webpack = require('webpack')
 const webpackConfig = require('../build/webpack.config')
 const config = require('../config')
-var proxy = require('http-proxy-middleware');
-var React = require('react')
-var Router = require('react-router')
+var proxy = require('http-proxy-middleware')
 
-import environments from '../config/environments';
+import environments from '../config/environments'
 
 const app = express()
 const paths = config.utils_paths
@@ -19,7 +17,7 @@ app.use(require('connect-history-api-fallback')())
 
 // If proxy is enabled, proxy /api calls to the api server.
 if (config.proxy && config.proxy.enabled) {
-  const apiProxy = proxy('/api', {target: 'http://' + environments.api.host + ':' + environments.api.port});
+  const apiProxy = proxy('/api', { target: 'http://' + environments.api.host + ':' + environments.api.port })
   app.use(apiProxy)
 }
 

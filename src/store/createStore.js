@@ -16,9 +16,9 @@ export default (initialState = {}) => {
   // ======================================================
   const enhancers = []
   if (__DEV__) {
-    //adding redux logging in the console
-    middleware.push(createLogger()) 
-       
+    // adding redux logging in the console
+    middleware.push(createLogger())
+
     const devToolsExtension = window.devToolsExtension
     if (typeof devToolsExtension === 'function') {
       enhancers.push(devToolsExtension())
